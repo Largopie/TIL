@@ -43,10 +43,10 @@ class Player extends User{
 
 <br>
 
-HashMap 예제
+해쉬맵 예제
 ```tsx
 type Words = {
-    [key:string]: string
+    [key:string]: string[]
 }
 
 class Dict {
@@ -76,24 +76,27 @@ class Dict {
 class Word {
     constructor(
         public term: string,
-        public def: string
+        public def: string[]
     ){}
+    print() {
+        return 'word: '+ this.term + "\n" + 'def: ' + this.def;
+    }
+    add_def(def: string){
+        this.def.push(def)
+    }
+    update_def(def: string, update: string){
+        this.def[this.def.indexOf(def)] = update
+    }
 }
 
-const kimchi = new Word("kimchi", "한국의 음식")
-const kimbob = new Word("kimbob", "한국의 간식")
+const kimchi = new Word("kimchi", ["한국의 음식"])
+const kimbob = new Word("kimbob", ["한국의 간식"])
 
 const dict = new Dict()
 
-dict.add(kimchi);
-dict.add(kimbob)
-dict.def("kimchi");
-console.log(dict)
-dict.del("kimbob")
-console.log(dict)
-
-dict.update("kimchi", "한국 토종 음식")
-console.log(dict)
+kimbob.add_def("분식")
+kimbob.update_def("분식", "분식집")
+console.log(kimbob.print())
 
 // Dict클래스에서 단어를 삭제, 업데이트 하는 메소드 만들기
 // Word클래스에서 단어의 정의를 추가, 수정하는 메소드, 단어를 출력하는 메소드 만들기
