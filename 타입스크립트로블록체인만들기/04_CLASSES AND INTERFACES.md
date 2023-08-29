@@ -101,3 +101,95 @@ console.log(kimbob.print())
 // Dict클래스에서 단어를 삭제, 업데이트 하는 메소드 만들기
 // Word클래스에서 단어의 정의를 추가, 수정하는 메소드, 단어를 출력하는 메소드 만들기
 ```
+
+### Interfaces
+
+- interface는 오로지 오브젝트의 모양을 타입스크립트에게 설명하기 위해서만 사용되는 키워드
+
+<br>
+
+Type을 특정 값으로 지정하는 방법
+
+```tsx
+type Team = "red" | "blue" | "yellow"
+type Health = 1 | 5 | 10
+
+type Player = {
+	nickname: string,
+	team: Team
+	health: Health
+}
+
+// interface 표현 방식
+interface Player {
+	nickname: string,
+	team: Team
+	health: Health
+}
+
+const nico: Player = {
+	nickname: "nico",
+	team: "red", // 위에 정의한 Team type에 벗어난 문자열이면 에러가 남
+	health: 10
+}
+```
+
+<br>
+
+추상클래스의 사용 방법
+
+```tsx
+abstract class User{
+    constructor(
+        protected firstName:string,
+        protected lastName:string
+    ){}
+
+    abstract sayHi(name:string):string
+    abstract fullName():string
+}
+
+class Player extends User{
+    fullName(){
+        return `${this.firstName} ${this.lastName}`
+    }
+    sayHi(name: string){
+        return `Hello ${name}. My name is ${this.fullName()}`
+    }
+}
+```
+
+추상클래스는 자바스크립트로 컴파일되면 결국 일반적인 클래스 형태가 된다. 대신 인터페이스는 가볍기 때문에 컴파일하면 JS로 바뀌지 않고 사라진다.
+
+<br>
+
+interface와 implements를 이용하여 변형
+
+```tsx
+interface User{
+    firstName: string
+    lastName: string
+    sayHi(name:string):string
+    fullName():string
+}
+
+interface Human{
+    health: number
+}
+
+// 한 클래스에서 여러 인터페이스도 상속 가능
+class Player implements User, Human{
+    constructor(
+        // 상속했기 때문에 public으로만 선언해야 함
+        public firstName: string,
+        public lastName: string,
+        public health: number
+    ){}
+    fullName(){
+        return `${this.firstName} ${this.lastName}`
+    }
+    sayHi(name: string){
+        return `Hello ${name}. My name is ${this.fullName()}`
+    }
+}
+```
