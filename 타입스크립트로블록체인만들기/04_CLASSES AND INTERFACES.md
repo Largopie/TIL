@@ -5,10 +5,6 @@
 ### Classes
 
 ❗️ 접근 가능 위치
-구분　　　선언한 클래스 내　상속받은 클래스 내　인스턴스
-private 　 　　　⭕　　　　　　　❌　　　　　❌
-protected 　　　⭕　　　　　　　⭕　　　　　❌
-public　　　　　⭕　　　　　　　⭕　　　　　⭕
 
 |구분|선언한 클래스 내|상속받은 클래스 내|인스턴스
 |----|----|----|----|
@@ -104,11 +100,11 @@ console.log(kimbob.print())
 
 ### Interfaces
 
-- interface는 오로지 오브젝트의 모양을 타입스크립트에게 설명하기 위해서만 사용되는 키워드
+- `interface`는 오로지 오브젝트의 모양을 타입스크립트에게 설명하기 위해서만 사용되는 키워드
 
 <br>
 
-Type을 특정 값으로 지정하는 방법
+`Type`을 특정 값으로 지정하는 방법
 
 ```tsx
 type Team = "red" | "blue" | "yellow"
@@ -163,7 +159,7 @@ class Player extends User{
 
 <br>
 
-interface와 implements를 이용하여 변형
+`interface`와 `implements`를 이용하여 변형
 
 ```tsx
 interface User{
@@ -192,4 +188,101 @@ class Player implements User, Human{
         return `Hello ${name}. My name is ${this.fullName()}`
     }
 }
+```
+
+<br>
+
+`interface`와 `type`의 차이점
+
+- `interface`는 동일한 이름으로 여러 번 선언할 수 있으며, `TypeScript`는 이러한 선언을 자동으로 병합한다.
+
+```tsx
+//Error Duplicate identifier 'PlayerA'
+type PlayerA {
+    firstName: string
+}
+
+type PlayerA {
+    lastName: string
+}
+
+// 정상작동
+interface PlayerB {
+    firstName: string
+}
+
+interface PlayerB {
+    lastName: string
+}
+```
+
+<br>
+
+- `type`은 `interface`와 달리 교차 타입, 유니온 타입, 튜플, 기타 고급 타입 등을 지원합니다.
+
+```tsx
+// type
+type Animal {
+	name: string
+}
+
+type Bear = Animal & {
+	honey: boolean
+}
+
+// interface
+interface Animal {
+	name: string
+}
+
+interface Bear extends Animal {
+	honey: boolean
+}
+```
+
+<br><br>
+
+### 다형성, 제네릭, 클래스, 인터페이스를 모두 활용
+
+<br>
+
+**[LocalStorageAPI 시뮬레이션]**
+
+```tsx
+// TypeScript에 Storage는 이미 정의되어 있음
+interface SStorage<T>{
+    [key:string]: T
+}
+
+class LocalStorage<T> {
+    private storage: SStorage<T> = {}
+
+    // set코드챌린지 이미 존재하고 있는 키를 확인해서 에러를 띄우기.
+    set(key:string, value:T){
+        this.storage[key] = value
+    }
+
+    remove(key:string){
+        delete this.storage[key]
+    }
+
+    get(key:string):T {
+        return this.storage[key]
+    }
+
+    clear(){
+        this.storage = {}
+    }
+}
+
+// 제네릭에 선언한 타입에 따라서 자동적으로 return값도 같은 타입으로 변경
+const stringStorage = new LocalStorage<string>()
+
+// (method) LocalStorage<string>.get(key: string): string
+stringStorage.get("ket")
+
+const booleanStorage = new LocalStorage<boolean>()
+
+// (method) LocalStorage<boolean>.get(key: string): boolean
+booleanStorage.get("xxx")
 ```
