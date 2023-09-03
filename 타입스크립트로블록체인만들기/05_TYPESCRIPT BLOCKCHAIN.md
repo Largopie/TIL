@@ -37,7 +37,7 @@
 >       "description": "",
 >       "main": "index.js",
 >       "scripts": {
->         **"build": "tsc"**
+>         "build": "tsc" // build
 >       },
 >       "keywords": [],
 >       "author": "",
