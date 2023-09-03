@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode
 
+# dependencies
+/타입스크립트로블록체인만들기/typechain/node_modules
+
 ### macOS ###
 # General
 .DS_Store
