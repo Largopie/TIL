@@ -92,3 +92,31 @@ ex) `"lib": ["ES6", "DOM"]`
 ❗️DOM(The Document Object Model): 문서 객체 모델은 HTML, XML 문서의 프로그래밍 interface이다. ex) `localStorage`, `window`, `document` 등
 
 **[lib 참고자료]** ( https://www.typescriptlang.org/tsconfig#lib )
+
+### strict 옵션
+
+- `localStorage`같은 내장 객체를 `TypeScript`에서 사용할 수 있는 이유는 개발자들이 관련 type들을 미리 정의했기 때문이다. ex)`Math`, `localStorage`, `HTMLElement`, `window`등
+
+myPackage.js
+
+```jsx
+export function init(config) {
+  return true;
+}
+
+export function exit(code) {
+  return code + 1;
+}
+```
+
+<br>
+
+index.ts
+
+```tsx
+import {init} from "myPackage"
+// strict mode 비활성화 시 정상 작동하지만 .d.ts파일에 정의해줘야 함
+// true 시 could not find a declaration file for module 에러 발생
+
+init()
+```
