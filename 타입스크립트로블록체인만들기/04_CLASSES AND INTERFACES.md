@@ -24,9 +24,8 @@ abstract class User{
 		private firstname:string,
 		private lastname:string,
 		public nickname:string
-	){
-		abstract getNickname():void
-	}
+	){}
+  abstract getNickname():void
 }
 
 class Player extends User{
