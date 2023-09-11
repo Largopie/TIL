@@ -120,3 +120,52 @@ import {init} from "myPackage"
 
 init()
 ```
+
+##
+
+# 블록체인 제작 : 가상화폐의 기본적인 기능 몇 가지 구현
+
+## 블록체인이란?
+
+- 여러개의 블록이 사슬처럼 묶인 것
+- 블록체인 내부에는 블록체인으로 보호하고 싶은 데이터가 존재
+- 연결고리는 **해쉬값**
+
+<br>
+
+```json
+//package.json
+"scripts": {
+    "build": "tsc",
+		"dev": "nodemon --exec ts-node src/index.ts",
+    "start": "node build/index.js"
+}
+```
+
+💡기본적인 workflow : `npm run build && npm run start`
+
+❗️`ts-node` : ts-node는 Node.js용 TypeScript 실행 엔진 및 REPL입니다. JIT는 TypeScript를 JavaScript로 변환하므로 사전 컴파일 없이 Node.js에서 TypeScript를 직접 실행할 수 있습니다.<br>
+(`npm i -D ts-node`)<br>
+**[관련자료]** https://www.npmjs.com/package/ts-node
+
+<br>
+
+❗️`nodemon` : 자동으로 커맨드 재실행<br>
+(`npm i nodemon`)<br>
+**[관련자료]** https://www.npmjs.com/package/nodemon
+
+<br>
+
+❗️`esModuleInterop` : CommonJS 모듈을 ES6 모듈 코드베이스로 가져오려고 할 때 발생하는 문제를 해결합니다. ES6 모듈 사양을 준수하여 CommonJS 모듈을 정상적으로 가져올 수 있게 해줍니다.<br>
+**[관련자료]** https://www.typescriptlang.org/tsconfig/#esModuleInterop
+
+##
+
+💡**DefinitelyTyped** : TypeScript type 정의를 위한 리포지토리입니다.
+
+**[해당 레포지토리]** https://github.com/DefinitelyTyped/DefinitelyTyped
+
+<br>
+
+## TypeScript 강의의 마무리
+더 심도있게 타입스크립트를 배우려면 [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)을 참고해서 읽기
