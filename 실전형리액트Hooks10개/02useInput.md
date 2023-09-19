@@ -24,9 +24,10 @@ const App = () => {
 
 export default App;
 ```
-초기값을 지정 후 value를 가져올 수 있다.
 
-onChange를 사용하여 값을 변경하는 방법도 있다. 이 때 함수를 인자로 받아 유효성 검사도 같이 가능하다.
+>초기값을 지정 후 value를 가져올 수 있다.<br>
+>`onChange`를 사용하여 값을 변경하는 방법도 있다. 이 때 함수를 인자로 받아 유효성 검사도 같이 가능하다.
+
 ```js
 import React, { useState } from "react";
 import "./styles.css";

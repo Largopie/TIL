@@ -37,4 +37,4 @@ const App = () => {
 export default App;
 ```
 
-- dependency 리스트에 변수가 존재하면 변수의 변경사항이 생길 때 마다 새로고침을 한다.
+> `dependency` 리스트에 변수가 존재하면 변수의 변경사항이 생길 때 마다 새로고침을 한다.

@@ -41,4 +41,4 @@ const App = () => {
 export default App;
 ```
 
-해당 section을 클릭 하면 해당 section에 해당하는 content를 출력해주는 실습
+> 해당 `section`을 클릭 하면 해당 `section`에 해당하는 `content`를 출력해주는 실습
