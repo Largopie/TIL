@@ -1,8 +1,8 @@
 # hooks
 
-- [ ] useTitle
-- [ ] useInput
-- [ ] usePageLeave
+- [x] useTitle
+- [x] useInput
+- [x] usePageLeave
 - [ ] useClick
 - [ ] useFadeIn
 - [ ] useFullScreen
