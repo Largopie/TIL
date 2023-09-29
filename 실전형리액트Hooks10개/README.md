@@ -4,9 +4,9 @@
 - [x] useInput
 - [x] usePageLeave
 - [x] useClick
+- [x] useHover
 - [ ] useFadeIn
 - [ ] useFullScreen
-- [ ] useHover
 - [ ] useNetwork
 - [ ] useNotification
 - [ ] useScroll
