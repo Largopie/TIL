@@ -12,7 +12,7 @@
 - [x] useNetwork
 - [x] useScroll
 - [x] useFullScreen
-- [ ] useNotification
+- [x] useNotification
 - [ ] useAxios
 
 ## hook을 사용하는 이유
