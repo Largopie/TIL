@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .calculator {
+        width: 300px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .display {
+        grid-column: span 4;
+        text-align: right;
+        background-color:#4C4C4C;
+        padding-right: 15px;
+        font-size: 4rem;
+        font-weight: 100;
+        color: #fff;
+      }
+
+      button {
+        font-size: 1.5rem;
+        font-weight: 100;
+        border-radius: none;
+        padding: 15px;
+        cursor: pointer;
+      }
+
+      .button-first-line {
+        background-color: #D6D6D6;
+        border: 1px solid #979797;
+      }
+
+      .button {
+        background-color: #DDDDDD;
+        border: 1px solid #979797;
+      }
+
+      .operator {
+        background-color: #f5923e;
+        color: white;
+      }
+
+      .zero {
+        grid-column: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="display">11</div>
+      <button class="button-first-line">C</button>
+      <button class="button-first-line">+/-</button>
+      <button class="button-first-line">%</button>
+      <button class="button-first-line operator">÷</button>
+      <button class="button">7</button>
+      <button class="button">8</button>
+      <button class="button">9</button>
+      <button class="button operator">x</button>
+      <button class="button">4</button>
+      <button class="button">5</button>
+      <button class="button">6</button>
+      <button class="button operator">ㅡ</button>
+      <button class="button">1</button>
+      <button class="button">2</button>
+      <button class="button">3</button>
+      <button class="button operator">+</button>
+      <button class="button zero">0</button>
+      <button class="button">.</button>
+      <button class="button operator">=</button>
+    </div>
+  </body>
+</html>
