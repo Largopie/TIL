@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 선택자 공부</title>
+  </head>
+  <style>
+    /* * 선택자 : 모든 태그를 선택하는 선택자 */
+    * {
+      /* background-color: #cc7e84; */
+    }
+
+    /* tag 선택자 : 주어진 이름의 태그를 선택하는 선택자 */
+    body {
+      display: flex;
+      flex-direction: column;
+      font-size: 3rem;
+      width: 960px;
+      margin: auto;
+    }
+
+    div {
+      color: yellow;
+    }
+
+    /* class 선택자 : 주어진 이름의 클래스를 선택하는 선택자. '.'을 붙여 사용 */
+    .container-1 {
+      background-color: aqua;
+    }
+
+    /* id 선택자 : 주어진 이름의 아이디를 선택하는 선택자. '#'을 붙여 사용 */
+    #container-2 {
+      background-color: blue;
+    }
+
+    /* 속성 선택자 : 태그의 붙은 속성도 선택자로 사용 가능 */
+    a[href="https://www.naver.com/"]
+    {
+      text-decoration: none;
+      color: black;
+    }
+
+    input[type='text'] {
+      padding: 2rem;
+      font-size: 2rem;
+      background-color: #4b50da;
+      color: white;
+    }
+
+    /* 
+    의사 클래스(pseudo class) 선택자 : 실제 요소에 붙은 클래스 명은 아니지만 특정 조건에서 
+    마치 해당 class가 붙어있는 것처럼 사용하는 선택자
+    */
+    a:link {
+      /* 방문하지 않은 a태그 */
+      background-color: yellow;
+    }
+
+    a:visited {
+      /* 빙문한 a태그 */
+      color: green;
+    }
+
+    div:hover {
+      /* 커서가 올라간 div태그 */
+      background-color: deeppink;
+    }
+
+    input:focus {
+      /* 포커싱 되어있는 input태그 */
+      background-color: black;
+    }
+
+    button:active {
+      /* 활성화한 button태그 */
+      background-color: white;
+    }
+
+    form:focus-within {
+      /* form 태그 내에 focus된 요소가 있으면 선택자 적용 */
+      background-color: yellow;
+    }
+
+    /* 구조 선택자 : DOM tree 구조상 요소가 어디에 위치해 있는지에 따라 적용되는 선택자 */
+    :root {
+      /* DOM tree의 root요소를 가리킴. HTML이라면 html태그를 가리킴. */
+      background-color: bisque;
+    }
+
+    :empty {
+      /* 요소 중 자식이 없는 요소를 가리킴 */
+      border: 3px solid blue;
+    }
+
+    .parent {
+      color: black;
+    }
+
+    span:nth-child(3) {
+      /* ()안에 있는 수식을 기반으로 요소를 선택합니다 */
+      /* nth-child(3n+2) 라면 3n+2번째 자식인 요소를 선택합니다 */
+      /* even, odd를 ()안에 넣게되면 짝수요소, 홀수요소를 선택합니다 */
+      color: lime;
+    }
+
+    span:nth-of-type(3) {
+      /* 특정 태그에 대해서 count를 진행 */
+      color: white;
+    }
+
+    span:not(.title) {
+      /* ~가 아닌 요소를 선택합니다. */
+      /* 괄호 안에는 css선택자가 들어갈 수 있습니다. */
+      background-color: purple;
+    }
+
+    /* 의사(가상) 요소 : 선택한 요소의 일부분에만 스타일을 적용할 수 있습니다. */
+    .pseudo-element {
+      color: black;
+      font-size: 1rem;
+    }
+
+    .pseudo-element:hover {
+      background-color: bisque;
+    }
+
+    .pseudo-element > p::first-line {
+      /* 문단의 첫 줄의 글씨체만 변경할 수 있습니다. */
+      color: red;
+    }
+
+    .pseudo-element > p::after {
+      /* 선택한 요소의 맨 마지막 자식으로 의사(가상) 요소를 생성합니다. */
+      /* content를 필수로 입력해야 가상 요소가 적용이 됩니다. */
+      content: "after-new-content";
+      color: green;
+    }
+
+    .pseudo-element > p::before {
+      /* 선택한 요소의 맨 마지막 자식으로 의사(가상) 요소를 생성합니다. */
+      /* content를 필수로 입력해야 가상 요소가 적용이 됩니다. */
+      content: "before-new-content";
+      color: blue;
+    }
+
+    .pseudo-element > p::selection {
+      /* 드래그한 영역 의사(가상) 요소입니다. */
+      background-color: aqua;
+      color: coral;
+    }
+  </style>
+  <body>
+    <div class="container-1">container1</div>
+    <div id="container-2">container2</div>
+    <br />
+    <input type="text" />
+    <input type="password" />
+    <a href="https://www.naver.com/">naver</a>
+    <a href="https://www.google.com/">google</a>
+    <button>활성화하기</button>
+    <br />
+    <form>
+      <input type="text" />
+    </form>
+
+    <br />
+    <p></p>
+    <p>123</p>
+    <div class="parent">
+      <span class="title">span1</span>
+      <p>p1</p>
+      <span>span2</span>
+      <p>p2</p>
+      <span>span3</span>
+      <span>span4</span>
+    </div>
+
+    <div class="pseudo-element">
+      <p>
+        Sint laborum velit do veniam amet magna. Minim minim exercitation eiusmod ex anim nulla in. Ut labore amet est voluptate ut in tempor anim est pariatur laboris labore sunt id. Ad proident
+        velit deserunt ex et sint consectetur ut enim culpa est proident. Enim proident esse elit excepteur dolor laborum anim dolore nulla culpa ut aliqua duis eiusmod. Elit velit mollit commodo
+        ipsum laborum quis voluptate eiusmod laboris ex laborum aliqua irure velit. Veniam culpa nisi quis incididunt excepteur aliqua eiusmod. Excepteur minim quis fugiat sunt cupidatat sint elit
+        mollit pariatur magna reprehenderit ex. Qui officia nisi labore anim cillum quis nostrud incididunt incididunt ullamco. Nostrud labore tempor culpa sint ea commodo proident culpa ullamco
+        voluptate Lorem occaecat non fugiat. Amet nostrud consequat Lorem ad aliquip in voluptate dolore. Dolor labore dolor cupidatat commodo dolor voluptate reprehenderit. Non proident officia
+        laboris enim adipisicing minim id veniam. Voluptate tempor Lorem voluptate cillum Lorem. Minim cillum cupidatat amet eu cupidatat mollit qui fugiat reprehenderit ullamco sunt occaecat mollit
+        ea. Adipisicing deserunt enim et sunt officia id officia cillum non pariatur tempor minim.
+      </p>
+    </div>
+  </body>
+</html>
